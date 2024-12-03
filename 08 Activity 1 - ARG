@@ -1,0 +1,58 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author jhnnn
+ */
+
+// Interface representing a Carnivore
+public interface Carnivore {
+    int pieces = 10; // Constant value
+
+    void eatGrass(); // Abstract method without a body
+
+    default int chew() { // Default method
+        return 13; // Default chewing value
+    }
+}
+
+// Interface representing a creature with wings
+interface HasWings { 
+    int getNumberOfWings(); // Method to get the number of wings
+}
+
+// Abstract class representing an Insect that has wings
+abstract class Insect implements HasWings { 
+    abstract int getNumberOfLegs(); // Abstract method for getting the number of legs
+}
+
+// Class representing a Dragonfly that extends Insect
+public class Dragonfly extends Insect {
+
+    @Override
+    public int getNumberOfWings() { // Implement method from HasWings
+        return 4; // Dragonfly has 4 wings
+    }
+
+    @Override
+    int getNumberOfLegs() { // Implement method from Insect
+        return 6; // Dragonfly has 6 legs
+    }
+
+    // Additional method to demonstrate the Dragonfly's behavior
+    public void displayInfo() {
+        System.out.println("Dragonfly has " + getNumberOfWings() + " wings and " + getNumberOfLegs() + " legs.");
+        System.out.println("Default chew value: " + chew());
+    }
+}
+
+// Main class to run the program
+public class Main {
+    public static void main(String[] args) {
+        Dragonfly dragonfly = new Dragonfly(); // Create a Dragonfly object
+        dragonfly.displayInfo(); // Display the information of the Dragonfly
+    }
+}
